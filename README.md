@@ -6,6 +6,7 @@ https://www.themoviedb.org/
 
 ### 사용기술
 
+- router
 - axios
 - usequery
 - typesctipt
