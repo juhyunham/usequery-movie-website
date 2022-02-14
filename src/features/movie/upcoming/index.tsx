@@ -1,17 +1,17 @@
 import React from "react";
 import styled from "@emotion/styled";
-import useNowPlayingMovie from "./useNowPlayingMovie";
+import useUpComingMovie from "./useUpComingMovie";
 import Card from "../../../components/Card";
 import Slider from "../../../components/Slider";
 
-const NowPlayingSection: React.FC = () => {
-  const { data, isLoading } = useNowPlayingMovie();
+const UpComingSection: React.FC = () => {
+  const { data, isLoading } = useUpComingMovie();
 
   const getYear = (data: string) => data.split("-")[0];
 
   return (
     <Base>
-      <Title>현재 상영작</Title>
+      <Title>개봉 예정작</Title>
       {isLoading || !data ? (
         <div>Loading...</div>
       ) : (
@@ -43,4 +43,4 @@ const Title = styled.h4`
   padding: 12px 0 14px;
 `;
 
-export default NowPlayingSection;
+export default UpComingSection;
