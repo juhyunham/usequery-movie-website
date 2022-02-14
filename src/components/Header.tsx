@@ -14,8 +14,8 @@ const Header: React.FC = () => {
             <Menu>
               <Link href="/">
                 <TextLogo>
-                  <span className="primary">로고</span>
-                  <span>텍스트</span>
+                  <span className="primary">HAM</span>
+                  <span>무비월드</span>
                 </TextLogo>
               </Link>
             </Menu>
@@ -83,7 +83,7 @@ const Menu = styled.li`
   height: 62px;
   flex-shrink: 0;
 
-  &:not(:first-child) {
+  &:not(:first-of-type) {
     margin-left: 24px;
   }
 `;
