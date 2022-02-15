@@ -10,6 +10,7 @@ const ArrowButton = styled.button<{ pos?: "left" | "right" }>`
   border-radius: 50%;
   z-index: 1;
   top: 50%;
+  margin-top: -16px;
   background-color: #fff;
   ${({ pos }) =>
     pos === "left"
@@ -19,7 +20,7 @@ const ArrowButton = styled.button<{ pos?: "left" | "right" }>`
         `
       : css`
           right: 0;
-          transform: translate(-50%, -50%);
+          transform: translate(50%, -50%);
         `};
 
   &:before {
@@ -47,12 +48,12 @@ const DEFAULT_SETTINGS: Settings = {
   swipe: true,
   draggable: true,
   prevArrow: (
-    <ArrowButton>
+    <ArrowButton pos="left">
       <MdArrowBackIos />
     </ArrowButton>
   ),
   nextArrow: (
-    <ArrowButton>
+    <ArrowButton pos="right">
       <MdArrowForwardIos />
     </ArrowButton>
   ),
