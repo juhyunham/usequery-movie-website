@@ -1,10 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "@emotion/styled";
+import useMovieSearch from "../features/movie/useMovieSearch";
 
 const Header: React.FC = () => {
-  const handleKeyword = () => {
-    return;
+  const [searchkeyword, setSearchKeyword] = useState<string>("");
+  const pathname = window.location.pathname;
+
+  const isTv = pathname.indexOf("tv") > -1;
+
+  const handleKeyword = (e: React.ChangeEvent<HTMLInputElement>): void => {
+    setSearchKeyword(e.target.value);
   };
+
+  const { data: searchResult } = useMovieSearch(searchkeyword);
 
   return (
     <Base>
@@ -21,10 +29,10 @@ const Header: React.FC = () => {
             </Menu>
             <Menu>
               <Link href="/">
-                <MenuButton active>영화</MenuButton>
+                <MenuButton active={pathname === "/"}>영화</MenuButton>
               </Link>
               <Link href="/">
-                <MenuButton active>TV 프로그램</MenuButton>
+                <MenuButton active={pathname === "/tv"}>TV 프로그램</MenuButton>
               </Link>
             </Menu>
             <SearchMenu>
@@ -37,6 +45,15 @@ const Header: React.FC = () => {
                   </SearchForm>
                 </SearchFormWrapper>
               </SearchContainer>
+              <SearchResultWrapper>
+                <SearchResultList>
+                  {searchResult?.data.results.map((searchItem) => (
+                    <SearchResultItem key={searchItem.id}>
+                      <Link href={`/movie/${searchItem.id}`}>{searchItem.title}</Link>
+                    </SearchResultItem>
+                  ))}
+                </SearchResultList>
+              </SearchResultWrapper>
             </SearchMenu>
             <Menu>
               <SignIn>로그인</SignIn>
@@ -75,7 +92,7 @@ const MenuList = styled.ul`
   padding: 0;
   margin: 0;
   display: flex;
-  overflow: hidden;
+  /* overflow: hidden; */
 `;
 
 const Menu = styled.li`
@@ -155,6 +172,48 @@ const SearchInput = styled.input`
   text-overflow: ellipsis;
   caret-color: rgb(53, 53, 53);
   line-height: 23px;
+`;
+
+const SearchResultWrapper = styled.div`
+  position: absolute;
+  top: 60px;
+  left: 0;
+  z-index: 999;
+  background: #fff;
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.3);
+`;
+
+const SearchResultList = styled.ul`
+  list-style: none;
+  margin: 0;
+  padding: 0;
+`;
+
+const SearchResultItem = styled.li`
+  box-sizing: border-box;
+  width: 100%;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-top: 1px solid #f1f1f3;
+
+  &:hover {
+    background: #eee;
+  }
+
+  a {
+    display: block;
+    width: 100%;
+    padding: 8px;
+    color: #222;
+    font-size: 13px;
+    text-align: left;
+  }
 `;
 
 const SignIn = styled.button`
