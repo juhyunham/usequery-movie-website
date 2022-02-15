@@ -31,8 +31,9 @@ const Header: React.FC = () => {
               <SearchContainer>
                 <SearchFormWrapper>
                   <SearchForm>
-                    <SearchLabel />
-                    <SearchInput placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." onChange={handleKeyword} />
+                    <SearchLabel>
+                      <SearchInput placeholder="콘텐츠, 인물, 컬렉션, 유저를 검색해보세요." onChange={handleKeyword} />
+                    </SearchLabel>
                   </SearchForm>
                 </SearchFormWrapper>
               </SearchContainer>
@@ -133,7 +134,7 @@ const SearchFormWrapper = styled.div``;
 const SearchForm = styled.div``;
 
 const SearchLabel = styled.label`
-  background: rgba(245, 245, 247);
+  background: rgb(245, 245, 247);
   display: flex;
   align-items: center;
   box-sizing: border-box;
@@ -152,13 +153,13 @@ const SearchInput = styled.input`
   border: 0;
   overflow: hidden;
   text-overflow: ellipsis;
-  color: rgb(53, 53, 53);
+  caret-color: rgb(53, 53, 53);
   line-height: 23px;
 `;
 
 const SignIn = styled.button`
   background: transparent;
-  color: rgb(116, 116, 123),
+  color: rgb(116, 116, 123);
   font-size: 14px;
   padding: 0;
   border: 0;
@@ -175,7 +176,7 @@ const SignUp = styled.button`
   background: transparent;
   color: rgb(53, 53, 53);
   font-size: 14px;
-  border: 1px solid rgb(116, 116, 123, 0.5);
+  border: 1px solid rgba(116, 116, 123, 0.5);
   cursor: pointer;
   margin: 15px 0;
 `;
