@@ -24,7 +24,7 @@ const Card: React.FC<Props> = ({ linkUrl, title, posterPath, voteAverage, year }
           <Average>
             <span>평균</span>
             <span>
-              &nbsp; <AiFillStar />{" "}
+              &nbsp; <AiFillStar />
             </span>
             <span>{voteAverage}</span>
           </Average>
