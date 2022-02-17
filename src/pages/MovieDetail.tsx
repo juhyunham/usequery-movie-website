@@ -11,6 +11,9 @@ import { AiOutlinePlus, AiFillEye } from "react-icons/ai";
 import { FaPen } from "react-icons/fa";
 import { FiMoreHorizontal } from "react-icons/fi";
 
+import DefaultInfo from "./../features/movie/detail/DefaultInfo";
+import Similar from "../features/movie/detail/Similar";
+
 type Params = {
   id: string;
 };
@@ -89,7 +92,16 @@ const MovieDetail: React.FC = () => {
             </Main>
           </TopInfo>
           <BottomInfo>
-            <ContentSectionContainer>{/* 정보 */}</ContentSectionContainer>
+            <ContentSectionContainer>
+              <DefaultInfo
+                title={data.title}
+                year={year}
+                genres={genre}
+                runtime={data.runtime}
+                overview={data.overview}
+              />
+              <Similar id={id as string} />
+            </ContentSectionContainer>
           </BottomInfo>
         </>
       )}
